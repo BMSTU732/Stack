@@ -26,7 +26,7 @@ SCENARIO("count() must return number of elements in the stack")
         {
             THEN("count() must return 3")
             {
-                REQUIRE(s.count() == 3);
+                REQUIRE(st.count() == 3);
             }
         }
     }

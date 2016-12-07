@@ -2,30 +2,36 @@
 #include <stack.hpp>
 
 
-SCENARIO("pop() must delete the top element of the stack and return its value")
+SCENARIO("when popping an element stack must return the last one")
 {
-    GIVEN("Filled stack")
+    GIVEN("stack")
     {
-        stack<int> s;
-        s.push(0);
-        s.push(1);
-        s.push(2);
-        WHEN("Calling pop()")
+        stack<int> st;
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        WHEN("pop an element")
         {
-            THEN("pop() must delete value 2 from the top and return it")
+            auto elem = st.pop();
+
+            THEN("popped element must be equal to 3")
             {
-                REQUIRE( ((s.pop() == 2) && (s.count() == 2) && (s.pop() == 1)) == true );
+                REQUIRE(elem == 3);
             }
         }
     }
-    GIVEN("Empty stack")
+}
+    SCENARIO("if stack is empty, pop method must throw an exception")
+{
+    GIVEN("empty stack")
     {
-        stack<int> s;
-        WHEN("Calling pop()")
+        stack<int> st;
+
+        WHEN("trying to pop an element")
         {
-            THEN("pop() must throw exception of the type underflow_error")
+            THEN("an exception must be thrown")
             {
-                REQUIRE_THROWS_AS(s.pop(), std::underflow_error);
+                REQUIRE_THROWS_AS(st.pop(), std::underflow_error &);
             }
         }
     }

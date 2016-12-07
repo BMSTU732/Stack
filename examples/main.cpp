@@ -14,11 +14,10 @@ int main()
             st.push(i);
             std::cout << st.count() << std::endl
         }
-         std::cout << st.count() << std::endl
         for (int i = 0; i < 6; ++i)
         {
             std::cout << "Poped: " << st.pop() << std::endl;
-            std::cout << "Count = " << s.count() << std::endl;
+            std::cout << "Count = " << st.count() << std::endl;
         }
 
     }

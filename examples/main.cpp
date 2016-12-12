@@ -1,9 +1,9 @@
 #include <stack.hpp>
 #include <iostream>
-setlocale(LC_ALL, "Russian");
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     stack<int> st;
     std::cout << st.empty() << std::endl;
     for (int i = 0; i < 6; ++i)

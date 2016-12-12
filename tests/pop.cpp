@@ -1,27 +1,28 @@
 #include "catch.hpp"
 #include <stack.hpp>
 
-
-SCENARIO("when popping an element stack must return the last one")
+SCENARIO("after popping an element from the stack count of elements in it must decrease by one")
 {
-    GIVEN("stack")
+    GIVEN("stack and its size")
     {
         stack<int> st;
         st.push(1);
         st.push(2);
-        st.push(3);
+        auto count = st.count();
+
         WHEN("pop an element")
         {
-            auto elem = st.pop();
+            st.pop();
 
-            THEN("popped element must be equal to 3")
+            THEN("count of elements in the stack must decrease by one")
             {
-                REQUIRE(elem == 3);
+                REQUIRE(st.count() == count - 1);
             }
         }
     }
 }
-    SCENARIO("if stack is empty, pop method must throw an exception")
+
+SCENARIO("if stack is empty, pop method must not change its size")
 {
     GIVEN("empty stack")
     {
@@ -29,9 +30,11 @@ SCENARIO("when popping an element stack must return the last one")
 
         WHEN("trying to pop an element")
         {
-            THEN("an exception must be thrown")
+            st.pop();
+
+            THEN("the size must be equal to 0")
             {
-                REQUIRE_THROWS_AS(st.pop(), std::underflow_error &);
+                REQUIRE(st.count() == 0);
             }
         }
     }

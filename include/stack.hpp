@@ -1,6 +1,9 @@
+#pragma warning(disable:4996)
+#pragma once
 #include <cstddef>
 #include <stdexcept>
 #include <algorithm>
+
 
 template <typename T>
 class stack
@@ -15,7 +18,7 @@ public:
 	auto top() const -> T;
 	~stack() { delete[] array_; }
 private:
-	static const size_t init_size_  5;
+	static const size_t init_size_ = 5;
 	T* array_;
 	size_t array_size_;
 	size_t count_;
@@ -109,4 +112,3 @@ auto stack<T>::top() const /*strong*/ -> T
 	}
 	throw std::underflow_error("Stack is empty!");
 }
-
